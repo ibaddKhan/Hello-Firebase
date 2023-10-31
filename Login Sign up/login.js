@@ -14,9 +14,27 @@ const form = document
     try {
       const res = await signInWithEmailAndPassword(auth, email, pass);
       console.log(res.user);
-      console.log("Successfully Logged in");
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Succesfully Logged in",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setTimeout(() => {
+        window.location = "./index.html";
+      }, 1000);
     } catch (error) {
       const errorCode = error.code;
-      console.log(error.title);
+      Swal.fire({
+        position: "top-center",
+        icon: "error",
+        title: errorCode,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
+
+    emaill.value = "";
+    passs.value = "";
   });

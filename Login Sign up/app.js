@@ -22,19 +22,25 @@ const form = document
       Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Your work has been saved",
+        title: "Account Created",
         showConfirmButton: false,
         timer: 1500,
       });
+      setTimeout(() => {
+        window.location = "./index.html";
+      }, 1000);
     } catch (error) {
       console.log(error);
       Swal.fire({
         position: "top-center",
         icon: "error",
-        title: error,
+        title: error.code,
         showConfirmButton: false,
         timer: 1500,
       });
+      setTimeout(() => {
+        window.location = "./index.html";
+      }, 1000);
     }
 
     emaill.value = "";

@@ -12,7 +12,7 @@
   </head>
   <body class="">
     <h1 class="text-6xl text-[#1e293b] text-center mt-4 font-bold">
-      Login Page
+      Sign Up Page
     </h1>
     <div class="main flex justify-center">
       <form
@@ -30,7 +30,7 @@
             class="shadow email appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="email"
-            placeholder="Enter your Username"
+            placeholder="Username"
           />
         </div>
         <div class="mb-6">
@@ -44,10 +44,10 @@
             class="shadow pass appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
-            placeholder="Enter your password"
+            placeholder="Choose a password"
           />
-          <a class="text-blue-300" href="./signup.html"
-            >Dont Have an Account?</a
+          <a class="text-blue-300" href="./login.html"
+            >Already Have an Account?</a
           >
         </div>
         <div class="flex items-center justify-center">
@@ -55,36 +55,18 @@
             class="bg-blue-500 w-2/3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            Login
+            Create Account
           </button>
         </div>
       </form>
     </div>
-    <div
-      id="monkey-window"
-      class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-70 hidden"
+    <a
+      href="./index.html"
+      class="ml-10 text-blue-300 hover:text-blue-500 text-sm"
     >
-      <div class="bg-white rounded-lg p-8 shadow-lg text-center">
-        <h2 class="text-2xl font-semibold mb-4">Welcome to Our Blog</h2>
-        <p class="text-gray-600 mb-4">
-          Explore the world of knowledge and ideas in our blog.
-        </p>
-        <button
-          id="login-button"
-          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg mr-4"
-        >
-          Login
-        </button>
-        <button
-          id="register-button"
-          class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-lg"
-        >
-          Register
-        </button>
-      </div>
-    </div>
-
+      ← Back to Login
+    </a>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <script type="module" src="login.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
