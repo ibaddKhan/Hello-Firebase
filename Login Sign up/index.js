@@ -53,3 +53,46 @@ function removeBackgroundFromNav() {
 }
 
 nightModeToggle.addEventListener("change", toggleNightMode);
+
+import {
+  signOut,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { auth } from "./config.js";
+
+const monkeyDiv = document.querySelector(".monkeyDiv");
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const uid = user.uid;
+    console.log(user, "is logged in");
+  } else {
+    setTimeout(() => {
+      const openModal = document.getElementById('openModal');
+      const closeModal = document.getElementById('closeModal');
+      const modal = document.querySelector('.modal');
+
+      openModal.addEventListener('click', () => {
+          modal.classList.add('opacity-100', 'pointer-events-auto');
+      });
+
+      closeModal.addEventListener('click', () => {
+          modal.classList.remove('opacity-100', 'pointer-events-auto');
+      }); 
+    }, 3000);
+    console.log("not logged in");
+  }
+});
+
+const SignOut = document.querySelector(".out");
+SignOut.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      console.log("Signed out");
+    })
+    .catch((error) => {
+      // An error happened.
+      console.log(error, "Not out");
+    });
+});
