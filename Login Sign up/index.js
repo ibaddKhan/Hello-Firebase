@@ -18,7 +18,6 @@ function toggleNightMode() {
     addBackgroundToNav();
     head.classList.add("text-gray-800");
     addBackgroundToPara();
-    removeBoxShadow();
   } else {
     addBoxShadow();
     removeBackgroundFromNav();
@@ -65,21 +64,13 @@ const monkeyDiv = document.querySelector(".monkeyDiv");
 onAuthStateChanged(auth, (user) => {
   if (user) {
     const uid = user.uid;
-    console.log(user, "is logged in");
+    console.log(uid, "is logged in");
   } else {
     setTimeout(() => {
-      const openModal = document.getElementById('openModal');
-      const closeModal = document.getElementById('closeModal');
-      const modal = document.querySelector('.modal');
+      const modal = document.querySelector(".modal");
 
-      openModal.addEventListener('click', () => {
-          modal.classList.add('opacity-100', 'pointer-events-auto');
-      });
-
-      closeModal.addEventListener('click', () => {
-          modal.classList.remove('opacity-100', 'pointer-events-auto');
-      }); 
-    }, 3000);
+      modal.classList.add("opacity-100", "pointer-events-auto");
+    }, 2000);
     console.log("not logged in");
   }
 });
@@ -89,6 +80,13 @@ SignOut.addEventListener("click", () => {
   signOut(auth)
     .then(() => {
       // Sign-out successful.
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Signed Out",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       console.log("Signed out");
     })
     .catch((error) => {

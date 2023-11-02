@@ -8,6 +8,10 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"
+      rel="stylesheet"
+    />
   </head>
   <style>
     * {
@@ -114,84 +118,40 @@
         </div>
       </div>
     </div>
-    <div class="monkeyDiv">
-      <div class="text-center">
-        <button
-          id="openModal"
-          class="bg-transparent border-2 border-yellow-600 text-yellow-600 font-semibold py-2 px-4 rounded transition duration-300 hover:bg-yellow-600 hover:text-white"
-        >
-          Click to Login
-        </button>
-      </div>
-
-      <!-- Modal Background -->
+    <div
+      class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center"
+    >
       <div
-        class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center"
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
+
+      <div
+        class="modal-container bg-white w-1/3 mx-auto rounded shadow-lg z-50 overflow-y-auto"
       >
-        <div
-          class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
-        ></div>
-
-        <!-- Modal Content -->
-        <div
-          class="modal-container bg-white w-1/3 mx-auto rounded shadow-lg z-50 overflow-y-auto"
-        >
-          <!-- Add margin if you want to see some of the overlay behind the modal-->
-          <div class="modal-content py-4 text-left px-6">
-            <!-- Title -->
-            <div class="flex justify-between items-center pb-3">
-              <p class="text-2xl font-bold">Monkey Login</p>
-              <div id="closeModal" class="modal-close cursor-pointer z-50">
-                <svg
-                  class="fill-current text-gray-700"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                >
-                  <path
-                    d="M18 1.5L16.5 0 9 7.5 1.5 0 0 1.5 7.5 9 0 16.5 1.5 18 9 10.5 16.5 18 18 16.5 10.5 9 18 1.5z"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Body -->
-            <p class="text-sm text-gray-700 py-4">
-              Please login to access your account
-            </p>
-
-            <form>
-              <div class="mb-4">
-                <input
-                  type="text"
-                  class="w-full px-3 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  placeholder="Username"
-                />
-              </div>
-              <div class="mb-4">
-                <input
-                  type="password"
-                  class="w-full px-3 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  placeholder="Password"
-                />
-              </div>
+        <div class="modal-content py-4 text-left px-6">
+          <p class="text-2xl font-bold text-center">You're Not Logged in</p>
+          <div class="mt-6 flex justify-center">
+            <a href="login.html">
               <button
-                type="submit"
-                class="w-full bg-blue-500 text-white py-2 rounded-lg transition duration-300 hover:bg-blue-600"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg mr-4"
+                id="login-button"
               >
                 Login
               </button>
-            </form>
-
-            <p class="text-sm text-gray-700 pt-4">
-              Don't have an account?
-              <a href="#" class="text-blue-500 hover:underline">Sign up</a>
-            </p>
+            </a>
+            <a href="signup.html">
+              <button
+                class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-lg"
+                id="register-button"
+              >
+                Register
+              </button>
+            </a>
           </div>
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>
