@@ -63,8 +63,7 @@ const monkeyDiv = document.querySelector(".monkeyDiv");
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    const uid = user.uid;
-    console.log(uid, "is logged in");
+    console.log("is logged in as", user.email);
   } else {
     setTimeout(() => {
       const modal = document.querySelector(".modal");

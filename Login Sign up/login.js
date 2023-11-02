@@ -17,7 +17,7 @@ const form = document
       Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Succesfully Logged in",
+        title: `Succesfully Logged in as ${res.user.email}`,
         showConfirmButton: false,
         timer: 1500,
       });
