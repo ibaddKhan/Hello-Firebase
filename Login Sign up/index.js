@@ -67,7 +67,7 @@ onAuthStateChanged(auth, (user) => {
       const modal = document.querySelector(".modal");
 
       modal.classList.add("opacity-100", "pointer-events-auto");
-    }, 2000);
+    }, 800);
     console.log("not logged in");
   }
   const SignOut = document.querySelector(".out");
