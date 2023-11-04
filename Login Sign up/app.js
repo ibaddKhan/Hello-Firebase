@@ -38,9 +38,6 @@ const form = document
         showConfirmButton: false,
         timer: 1500,
       });
-      setTimeout(() => {
-        window.location = "./index.html";
-      }, 1000);
     }
 
     emaill.value = "";
