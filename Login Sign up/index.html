@@ -47,7 +47,6 @@
             Register
           </button></a
         >
-        <button class="out">Sign Out</button>
       </div>
       <div class="fixed top-0 right-0 m-4" id="toggleContainer">
         <div class="relative">
@@ -119,7 +118,7 @@
       </div>
     </div>
     <div
-      class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center"
+      class="modal absolute opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center"
     >
       <div
         class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
@@ -151,6 +150,17 @@
         </div>
       </div>
     </div>
+    <div class="fixed bottom-3.5 z-50 right-5">
+      <button class="out rounded-full p-1 bg-white">
+        <img src="./Imgs/on-off-button.png" width="30px" alt="" />
+      </button>
+    </div>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script type="module" src="index.js"></script>
   </body>
