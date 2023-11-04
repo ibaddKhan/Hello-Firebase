@@ -59,8 +59,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { auth } from "./config.js";
 
-const monkeyDiv = document.querySelector(".monkeyDiv");
-
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("is logged in as", user.email);
@@ -72,24 +70,33 @@ onAuthStateChanged(auth, (user) => {
     }, 2000);
     console.log("not logged in");
   }
-});
-
-const SignOut = document.querySelector(".out");
-SignOut.addEventListener("click", () => {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Signed Out",
-        showConfirmButton: false,
-        timer: 1500,
+  const SignOut = document.querySelector(".out");
+  SignOut.addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        if (user) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Signed Out",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Youre Already Logged Out",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        console.log("Signed out");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error, "Not out");
       });
-      console.log("Signed out");
-    })
-    .catch((error) => {
-      // An error happened.
-      console.log(error, "Not out");
-    });
+  });
 });
