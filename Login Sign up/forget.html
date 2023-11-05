@@ -3,38 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reset</title>
+    <title>Reset Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <form action="">
-      <input type="text" />
-      <button type="submit">Send</button>
-    </form>
-
-    <script type="module">
-      import {
-        signInWithEmailAndPassword,
-        sendPasswordResetEmail,
-      } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-      import { auth } from "./config.js";
-
-      const form = document.querySelector("form");
-      const emaill = document.querySelector("input");
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        sendPasswordResetEmail(auth, emaill.value)
-          .then(() => {
-            // Password reset email sent!
-            // ..
-            // console.log("email s");
-            console.log("email sent");
-          })
-          .catch((error) => {
-            console.log(error);
-            // ..
-          });
-      });
-    </script>
+  <body class="flex items-center justify-center bg-gray-100">
+    <div class="bg-white w-96 p-8 rounded-lg shadow-lg fixed top-20">
+      <form>
+        <h1 class="text-2xl font-bold mb-4 text-center">Reset Password</h1>
+        <div class="mb-4">
+          <input
+            class="w-full px-4 py-2 border border-gray-300 rounded-md"
+            type="text"
+            placeholder="Enter Your Email"
+          />
+        </div>
+        <button
+          class="relative w-full px-4 py-2 bg-emerald-500 text-white rounded-md custom-button"
+        >
+          <span class="relative z-10">Send</span>
+          <span
+            class="absolute left-0 bottom-0 w-0 h-1 bg-emerald-500 transform origin-left transition-transform duration-300 group-hover:scale-x-100"
+          ></span>
+        </button>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="./forget.js" type="module"></script>
   </body>
 </html>
