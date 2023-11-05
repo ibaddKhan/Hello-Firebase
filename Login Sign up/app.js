@@ -1,5 +1,10 @@
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { auth } from "./config.js";
+import { auth, db } from "./config.js";
+
+import {
+  collection,
+  addDoc,
+} from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
 
 const emaill = document.querySelector(".email");
 const password = document.querySelector(".pass");
@@ -38,6 +43,8 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     });
   }
 
-  emaill.value = "";
-  password.value = "";
+  // emaill.value = "";
+  // password.value = "";
 });
+
+// const emi = document.querySelector(".emi");

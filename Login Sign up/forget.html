@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" />
+      <button type="submit">Send</button>
+    </form>
+
+    <script type="module">
+      import {
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail,
+      } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+      import { auth } from "./config.js";
+
+      const form = document.querySelector("form");
+      const emaill = document.querySelector("input");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        sendPasswordResetEmail(auth, emaill.value)
+          .then(() => {
+            // Password reset email sent!
+            // ..
+            // console.log("email s");
+            console.log("email sent");
+          })
+          .catch((error) => {
+            console.log(error);
+            // ..
+          });
+      });
+    </script>
+  </body>
+</html>
