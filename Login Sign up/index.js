@@ -60,6 +60,8 @@ import {
 import { auth } from "./config.js";
 
 onAuthStateChanged(auth, (user) => {
+  console.log(user);
+
   if (user) {
     console.log("is logged in as", user.email);
   } else {

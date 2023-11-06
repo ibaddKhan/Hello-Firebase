@@ -1,30 +1,48 @@
-import {
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { auth } from "./config.js";
 
-const passs = document.querySelector(".pass");
+const password = document.querySelector(".pass");
 const emaill = document.querySelector(".email");
+
+const defPass = localStorage.getItem("pass");
+const defEmail = localStorage.getItem("email");
+
+password.value = defPass;
+emaill.value = defEmail;
 
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const pass = passs.value;
+  const pass = password.value;
   const email = emaill.value;
 
   try {
     const res = await signInWithEmailAndPassword(auth, email, pass);
-    console.log(res.user);
-    Swal.fire({
-      position: "top-center",
-      icon: "success",
-      title: `Succesfully Logged in as ${res.user.email}`,
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    setTimeout(() => {
-      window.location = "./index.html";
-    }, 1000);
+
+    if (res.user.emailVerified) {
+      console.log(res.user);
+
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: `Successfully Logged in as ${res.user.email}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      password.value = "";
+      emaill.value = "";
+      setTimeout(() => {
+        window.location = "./index.html";
+      }, 1000);
+    } else {
+      Swal.fire({
+        position: "top-center",
+        icon: "error",
+        title: "Verify First",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   } catch (error) {
     const errorCode = error.code;
     Swal.fire({
@@ -34,8 +52,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
       showConfirmButton: false,
       timer: 1500,
     });
+    password.value = "";
+    emaill.value = "";
   }
-
-  emaill.value = "";
-  passs.value = "";
 });

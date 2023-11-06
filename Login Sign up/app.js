@@ -1,20 +1,18 @@
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { auth, db } from "./config.js";
-
 import {
-  collection,
-  addDoc,
-} from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
-
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { auth } from "./config.js";
 const emaill = document.querySelector(".email");
 const password = document.querySelector(".pass");
-
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const email = emaill.value;
   const pass = password.value;
 
+  localStorage.setItem("pass", pass);
+  localStorage.setItem("email", email);
   console.log(email);
   console.log(pass);
   console.log("Working");
@@ -24,13 +22,18 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     console.log(res.user);
     Swal.fire({
       position: "top-center",
-      icon: "success",
-      title: "Account Created",
+      icon: "info",
+      title: "Please verify your email before logging in",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 3000,
     });
+
+    emaill.value = "";
+    password.value = "";
+    await sendEmailVerification(auth.currentUser);
+    signOut(auth);
     setTimeout(() => {
-      window.location = "./index.html";
+      window.location = "./login.html";
     }, 1000);
   } catch (error) {
     console.log(error);
@@ -41,10 +44,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
       showConfirmButton: false,
       timer: 1500,
     });
+    emaill.value = "";
+    password.value = "";
   }
-
-  // emaill.value = "";
-  // password.value = "";
 });
-
-// const emi = document.querySelector(".emi");
