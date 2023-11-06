@@ -4,6 +4,9 @@ import { auth } from "./config.js";
 const form = document.querySelector("form");
 const emaill = document.querySelector("input");
 
+const newEmail = localStorage.getItem("email");
+
+emaill.value = newEmail;
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -17,6 +20,9 @@ form.addEventListener("submit", (e) => {
         showConfirmButton: false,
         timer: 1500,
       });
+      setTimeout(() => {
+        window.location = "./login.html";
+      }, 2000);
     })
     .catch((error) => {
       Swal.fire({
