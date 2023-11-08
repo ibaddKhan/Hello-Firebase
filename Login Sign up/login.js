@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { signInWithEmailAndPassword , signOut} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { auth } from "./config.js";
 
 const password = document.querySelector(".pass");
@@ -42,6 +42,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
         showConfirmButton: false,
         timer: 1500,
       });
+      signOut(auth)
     }
   } catch (error) {
     const errorCode = error.code;
